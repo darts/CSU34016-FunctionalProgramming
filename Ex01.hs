@@ -30,7 +30,6 @@ and reports the length of the prefix they have in common.
 
 -}
 commonLen :: Eq a => [a] -> [a] -> Int
-commonLen [] [] = 0
 commonLen [] _ = 0
 commonLen _ [] = 0
 commonLen (a:as) (b:bs) = 
