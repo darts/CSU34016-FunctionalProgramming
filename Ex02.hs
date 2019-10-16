@@ -43,7 +43,7 @@ v42 = Val 42 ; j42 = Just v42
 eval :: EDict -> Expr -> Maybe Double
 eval d (Var e) = find d e
 eval _ (Val e) = Just e
-eval _ (Dvd e (Val 0)) = Nothing
+eval _ (Dvd e (Val 0)) = Nothing 
 
 eval d (Add a b) 
   = case (eval d a, eval d b) of
@@ -99,7 +99,7 @@ law1 :: Expr -> Maybe Expr
 law1 (Add x y) = Just (Add y x)
 
 law2 :: Expr -> Maybe Expr
-law2 e = j42
+law2 (Add x (Add y z)) = Just (Add (Add x y) z)
 
 law3 :: Expr -> Maybe Expr
 law3 e = j42
