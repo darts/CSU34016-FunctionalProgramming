@@ -41,8 +41,16 @@ v42 = Val 42 ; j42 = Just v42
   -- (2) the expression contains a variable not in the dictionary.
 
 eval :: EDict -> Expr -> Maybe Double
+eval d (Var e) = find d e
+eval _ (Val e) = Just e
+
+
+
+-- eval d (Dvd a (Val 0)) = Nothing
 eval d e = Just 1e-99
--- eval [] e = Just e
+
+
+
 
 -- Part 1 : Expression Laws -- (15 test marks, worth 15 Exercise Marks) --------
 
@@ -68,7 +76,7 @@ There are many, many laws of algebra that apply to our expressions, e.g.,
 
 
 law1 :: Expr -> Maybe Expr
-law1 e = j42
+law1 (Add x y) = Just (Add y x)
 
 law2 :: Expr -> Maybe Expr
 law2 e = j42
