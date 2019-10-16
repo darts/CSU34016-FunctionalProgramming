@@ -44,9 +44,26 @@ eval :: EDict -> Expr -> Maybe Double
 eval d (Var e) = find d e
 eval _ (Val e) = Just e
 
+eval d (Add a b) 
+  = case (eval d a, eval d b) of
+    (Just x, Just y) -> Just (x+y)
+    _                -> Nothing 
 
+eval d (Dvd a b) 
+  = case (eval d a, eval d b) of
+    (Just x, Just y) -> Just (x/y)
+    _                -> Nothing 
 
--- eval d (Dvd a (Val 0)) = Nothing
+eval d (Mul a b) 
+  = case (eval d a, eval d b) of
+    (Just x, Just y) -> Just (x*y)
+    _                -> Nothing 
+
+eval d (Sub a b) 
+    = case (eval d a, eval d b) of
+      (Just x, Just y) -> Just (x-y)
+      _                -> Nothing 
+
 eval d e = Just 1e-99
 
 
