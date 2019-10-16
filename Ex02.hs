@@ -40,6 +40,8 @@ v42 = Val 42 ; j42 = Just v42
   -- (1) a divide by zero operation was going to be performed;
   -- (2) the expression contains a variable not in the dictionary.
 
+
+
 eval :: EDict -> Expr -> Maybe Double
 eval d (Var e) = find d e
 eval _ (Val e) = Just e
@@ -65,7 +67,13 @@ eval d (Dvd a b)
     (Just x, Just y) -> Just (x/y)
     _                -> Nothing 
 
+-- eval d (Def n a b) = (define d n (eval d a)), eval d b
 
+eval d (Def n a b)
+  = let x = eval d a
+  in case (x) of 
+    Just x -> eval (define d n x) b
+    Nothing -> error "asdf"
 
 eval d e = Just 1e-99
 
