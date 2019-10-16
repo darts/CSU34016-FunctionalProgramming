@@ -102,7 +102,8 @@ law2 :: Expr -> Maybe Expr
 law2 (Add x (Add y z)) = Just (Add (Add x y) z)
 
 law3 :: Expr -> Maybe Expr
-law3 e = j42
+law3 (Sub x (Add y z)) = Just (Sub (Sub x y) z) 
 
 law4 :: Expr -> Maybe Expr
 law4 e = j42
+-- law4 (Mul (Add x y) (Sub x y)) = Just (Sub (Mul x x) (Mul y y))
