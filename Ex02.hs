@@ -121,10 +121,13 @@ law3 thing
 
 
 law4 :: Expr -> Maybe Expr
-law4 e = j42
--- law4 thing  
---     =case thing of
---       (Mul (Add x y) (Sub x y)) -> Just (Sub (Mul x x) (Mul y y))
---       _                         -> Nothing
-
--- law4 (Mul (Add x y) (Sub x y)) = Just (Sub (Mul x x) (Mul y y))
+law4 thing  
+    =case (thing) of
+      (Mul (Add a b) (Sub c d)) -> law4hlp (a==c) (b==d) (Sub (Mul a c) (Mul b d))
+      _                                     -> Nothing
+      
+law4hlp :: Bool -> Bool -> Expr -> Maybe Expr
+law4hlp a b c
+        =case (a, b) of
+          (True, True) -> Just c
+          (_, _)       -> Nothing
