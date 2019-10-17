@@ -73,7 +73,7 @@ eval d (Def n a b)
   = let x = eval d a
   in case (x) of 
     Just x -> eval (define d n x) b
-    Nothing -> error "asdf"
+    _      -> Nothing
 
 eval d e = Just 1e-99
 
