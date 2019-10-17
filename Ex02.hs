@@ -104,13 +104,29 @@ There are many, many laws of algebra that apply to our expressions, e.g.,
 
 
 law1 :: Expr -> Maybe Expr
-law1 (Add x y) = Just (Add y x)
+-- law1 (Add x y) = Just (Add y x)
+law1 (thing)
+    = let a = thing
+    in case a of
+      (Add x y) -> Just (Add y x)
+      _         -> Nothing
 
 law2 :: Expr -> Maybe Expr
-law2 (Add x (Add y z)) = Just (Add (Add x y) z)
+-- law2 (Add x (Add y z)) = Just (Add (Add x y) z)
+law2 (thing)
+    = let a = thing
+    in case a of
+      (Add x (Add y z)) -> Just (Add (Add x y) z)
+      _                 -> Nothing
 
 law3 :: Expr -> Maybe Expr
-law3 (Sub x (Add y z)) = Just (Sub (Sub x y) z) 
+-- law3 (Sub x (Add y z)) = Just (Sub (Sub x y) z) 
+law3 (thing)
+    = let a = thing
+    in case a of
+      (Sub x (Add y z)) -> Just (Sub (Sub x y) z)
+      _                 -> Nothing
+
 
 law4 :: Expr -> Maybe Expr
 law4 e = j42
