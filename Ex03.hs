@@ -32,12 +32,13 @@ module Ex03 where
     | a < k     = Branch (insBST a b left) k d right
     | a > k     = Branch left k d (insBST a b right)
     | otherwise = Branch left a b right
-  insBST _ _ _  =  error "insBST not yet implmented"
   
   -- Coding Part 2 (6 Marks)
   
   -- convert an association list to a binary search tree
   assoc2bst :: Ord a => Assoc a b -> BT a b
+  assoc2bst [] = Leaf
+  -- assoc2bst (Assoc a b) = insBST a b 
   assoc2bst _ = error "assoc2bst not yet implemented"
   
   -- Coding Part 3 (6 Marks)
