@@ -39,7 +39,7 @@ module Ex03 where
   assoc2bst :: Ord a => Assoc a b -> BT a b
   assoc2bst [] = Leaf
   assoc2bst [(a, b)] = insBST a b Leaf
-  assoc2bst [(a, b): c] = insBST a b (assoc2bst [c]) 
+  assoc2bst ((a,b):as) = insBST a b (assoc2bst as) 
 
   assoc2bst _ = error "assoc2bst not yet implemented"
   
