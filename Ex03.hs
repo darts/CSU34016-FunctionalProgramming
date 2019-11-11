@@ -40,12 +40,11 @@ module Ex03 where
   assoc2bst [] = Leaf
   assoc2bst [(a, b)] = insBST a b Leaf
   assoc2bst ((a,b):as) = insBST a b (assoc2bst as) 
-
-  assoc2bst _ = error "assoc2bst not yet implemented"
   
   -- Coding Part 3 (6 Marks)
   
   -- convert a binary search tree into an (ordered) association list
   bst2assoc :: Ord c =>  BT c e -> Assoc c e
+  bst2assoc Leaf = []
   bst2assoc _ = error "bst2assoc not yet implemented"
   
