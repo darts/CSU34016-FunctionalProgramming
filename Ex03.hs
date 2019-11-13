@@ -27,8 +27,8 @@ module Ex03 where
   
   -- insert into binary (search) tree
   insBST :: Ord a => a -> b -> BT a b -> BT a b
-  insBST a b Leaf = Branch Leaf a b Leaf
-  insBST a b (Branch left k d right)
+  insBST a b Leaf = Branch Leaf a b Leaf --if inserting into empty tree (or adding a new node), set the value of the node to the key/val
+  insBST a b (Branch left k d right) --recursively step through the tree to find where the new pair should go
     | a < k     = Branch (insBST a b left) k d right
     | a > k     = Branch left k d (insBST a b right)
     | otherwise = Branch left a b right
@@ -37,8 +37,8 @@ module Ex03 where
   
   -- convert an association list to a binary search tree
   assoc2bst :: Ord a => Assoc a b -> BT a b
-  assoc2bst [] = Leaf
-  assoc2bst [(a, b)] = insBST a b Leaf
+  assoc2bst [] = Leaf --empty array is empty tree
+  assoc2bst [(a, b)] = insBST a b Leaf -- 
   assoc2bst ((a,b):as) = insBST a b (assoc2bst as) 
   
   -- Coding Part 3 (6 Marks)
