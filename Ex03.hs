@@ -38,12 +38,12 @@ module Ex03 where
   -- convert an association list to a binary search tree
   assoc2bst :: Ord a => Assoc a b -> BT a b
   assoc2bst [] = Leaf --empty array is empty tree
-  assoc2bst [(a, b)] = insBST a b Leaf -- 
-  assoc2bst ((a,b):as) = insBST a b (assoc2bst as) 
+  assoc2bst [(a, b)] = insBST a b Leaf -- adding a single node means inserting into an empty tree
+  assoc2bst ((a,b):as) = insBST a b (assoc2bst as) --recursively add nodes until the end of the list is reached
   
   -- Coding Part 3 (6 Marks)
   
   -- convert a binary search tree into an (ordered) association list
   bst2assoc :: Ord c =>  BT c e -> Assoc c e
-  bst2assoc Leaf = []
-  bst2assoc (Branch left a b right) = concat[bst2assoc left, [(a,b)], bst2assoc right]
+  bst2assoc Leaf = [] --empty tree is empty array
+  bst2assoc (Branch left a b right) = concat[bst2assoc left, [(a,b)], bst2assoc right] --concat each of the nodes into an array in order
