@@ -1,3 +1,8 @@
 
 CSU34016-1920/
 proof-check/
+*.hi
+Practice/pr1
+*.o
+Practice/tst.js
+.DS_Store
