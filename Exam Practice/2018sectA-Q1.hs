@@ -12,8 +12,10 @@ reverse2 al = rev2 al []
 rev2 [] b = b
 rev2 (a:as) b = rev2 as (a:b)
 
+-- Incorrect****
 break2 :: (a -> Bool) -> [a] -> ([a],[a])
 break2 f a = ([b | b <- a, (f b)], [c | c <- a, not (f c)])
+-- *************
 
 max3 :: Ord a => [a] -> a
 max3 [a] = a
